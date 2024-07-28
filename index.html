@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Konversi</title>
+    <style>
+        /* Reset margin dan padding untuk semua elemen */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling untuk body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #fff;
+            background-color: #000; /* Warna latar belakang hitam */
+        }
+
+        /* Styling untuk heading utama */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffcc00; /* Warna emas untuk heading utama */
+        }
+
+        /* Styling untuk setiap section */
+        section {
+            background: rgba(0, 0, 0, 0.7); /* Latar belakang semi transparan hitam */
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Styling untuk heading dalam section */
+        section h2 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            color: #ffcc00; /* Warna emas untuk heading di dalam section */
+        }
+
+        /* Styling untuk input, textarea, dan button */
+        input[type="file"],
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Styling khusus untuk textarea */
+        textarea {
+            resize: vertical;
+            background-color: #222;
+        }
+
+        /* Styling khusus untuk button */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling untuk placeholder pada input dan textarea */
+        input::placeholder,
+        textarea::placeholder {
+            color: #ccc;
+        }
+
+        /* Styling untuk input dan textarea yang readonly */
+        input[readonly],
+        textarea[readonly] {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form Login -->
+    <section id="loginSection">
+        <h2>Login</h2>
+        <input type="text" id="whitelistInput" placeholder="Masukkan kata kunci">
+        <button id="whitelistButton">Login</button>
+    </section>
+
+    <!-- Konten halaman yang hanya bisa diakses jika pengguna di whitelist -->
+    <section id="mainContent" style="display: none;">
+        <h1>Menu Konversi</h1>
+        
+        <!-- Menu Konversi File TXT ke VCF -->
+        <section>
+            <h2>Konversi File TXT ke VCF</h2>
+            <input type="file" id="txtFileInput" accept=".txt">
+            <textarea id="fileContent" rows="10" placeholder="Konten file TXT akan muncul di sini..."></textarea>
+            <button id="convertCountButton">Hitung Kontak</button>
+            <input type="text" id="convertContactCount" placeholder="Jumlah kontak" readonly>
+            <input type="text" id="convertFileNameInput" placeholder="Nama file VCF">
+            <input type="text" id="contactNameInput" placeholder="Nama kontak">
+            <button id="convertButton">Konversi TXT ke VCF</button>
+        </section>
+        
+        <!-- Menu Pecah File VCF -->
+        <section>
+            <h2>Pecah File VCF</h2>
+            <input type="file" id="vcfFileInput" accept=".vcf">
+            <input type="number" id="contactsPerFile" placeholder="Kontak per file">
+            <input type="text" id="splitFileNameInput" placeholder="Nama file VCF">
+            <label for="contactNameInput">Nama Kontak:</label>
+            <input type="text" id="contactNameInput" value="Contact">
+
+            <button id="splitButton">Pecah VCF</button>
+            
+           
+        </section>
+        
+        <!-- Menu Gabungkan File Teks -->
+        <section>
+            <h2>Gabungkan File Teks</h2>
+            <input type="file" id="txtFilesInput" multiple accept=".txt">
+            <input type="text" id="mergedFileNameInput" placeholder="Nama file gabungan">
+            <button id="mergeButton">Gabungkan File Teks</button>
+        </section>
+        
+        <!-- Menu Gabungkan File VCF -->
+        <section>
+            <h2>Gabungkan File VCF</h2>
+            <input type="file" id="vcfFilesInput" multiple accept=".vcf">
+            <input type="text" id="mergedVCFFileNameInput" placeholder="Nama file gabungan">
+            <button id="mergeVCFButton">Gabungkan File VCF</button>
+        </section>
+        
+        <!-- Menu Konversi VCF ke TXT -->
+        <section>
+            <h2>Konversi VCF ke TXT</h2>
+            <input type="file" id="vcfToTxtFileInput" accept=".vcf">
+            <button id="convertVcfToTxtButton">Konversi VCF ke TXT</button>
+            <textarea id="txtFileContent" rows="10" placeholder="Konten file TXT akan muncul di sini..." readonly></textarea>
+        </section>
+        
+        <!-- Menu Konversi Excel ke TXT -->
+        <section>
+            <h2>Konversi Excel ke TXT</h2>
+            <input type="file" id="excelFileInput" accept=".xlsx">
+            <input type="text" id="excelFileNameInput" placeholder="Nama file TXT">
+            <button id="convertExcelToTxtButton">Konversi Excel ke TXT</button>
+            <textarea id="excelFileContent" rows="10" placeholder="Konten file TXT akan muncul di sini..." readonly></textarea>
+        </section>
+    </section>
+
+    <!-- Skrip JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
